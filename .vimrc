@@ -1,7 +1,6 @@
 " ------------------------------------------------------------------------------
-
 " Basic Setting
-
+" ------------------------------------------------------------------------------
 let mapleader=","
 
 colorscheme desert
@@ -30,9 +29,10 @@ set listchars=tab:>>,trail:-
 
 set cc=101
 
-" ------------------------------------------------------------------------------
 
+" ------------------------------------------------------------------------------
 " Taglist
+" ------------------------------------------------------------------------------
 let Tlist_Use_LEFT_Window=1
 let Tlist_File_Fold_Auto_Close=1
 let Tlist_Show_One_File=1
@@ -42,15 +42,17 @@ let Tlist_Exit_OnlyWindow=1
 nmap tl :Tlist<cr>
 nmap <silent> <F12> :A<CR>
 
-" ------------------------------------------------------------------------------
 
+" ------------------------------------------------------------------------------
 " Make Vim Configuration Easier
+" ------------------------------------------------------------------------------
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" ------------------------------------------------------------------------------
 
+" ------------------------------------------------------------------------------
 " Clang Complete
+" ------------------------------------------------------------------------------
 let g:clang_complete_copen=1
 let g:clang_periodic_quickfix=1
 let g:clang_snippets=1
@@ -59,21 +61,39 @@ let g:clang_use_library=1
 let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
 let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
 
-" ------------------------------------------------------------------------------
 
+" ------------------------------------------------------------------------------
 " Pathogen
+" ------------------------------------------------------------------------------
 execute pathogen#infect()
 
-" ------------------------------------------------------------------------------
 
+" ------------------------------------------------------------------------------
 " NERD Tree
-nnoremap <leader>> :NERDTree<cr>
-nnoremap <leader>< :NERDTreeClose<cr>
+" ------------------------------------------------------------------------------
+nnoremap <leader>n :NERDTreeToggle<cr>
+
 let NERDTreeShowHidden=1
 
-" ------------------------------------------------------------------------------
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+" ------------------------------------------------------------------------------
 " Powerline
+" ------------------------------------------------------------------------------
 set laststatus=2
 
+
 " ------------------------------------------------------------------------------
+" CtrlP
+" ------------------------------------------------------------------------------
+nnoremap <leader>fu :CtrlPFunky<cr>
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
+let g:ctrlp_funky_matchtype = 'path'
+let g:ctrlp_funky_syntax_highlight = 1
+
+set wildignore+=*.a,*.o,*.d
+
+
+
