@@ -16,3 +16,6 @@
 [submodule "ctrlp"]
 	path = .vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "ctrlp-funky"]
+	path = .vim/bundle/ctrlp-funky
+	url = git://github.com/tacahiroy/ctrlp-funky.git
